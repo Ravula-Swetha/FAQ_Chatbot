@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import axios from 'axios';
 import { MessageCircle } from 'lucide-react';
 import './CollegeWebsiteInterface.css';
 
@@ -17,16 +18,25 @@ const CollegeWebsiteInterface = () => {
 
     useEffect(scrollToBottom, [messages]);
 
-    const handleSendMessage = (e) => {
+    const handleSendMessage = async (e) => {
         e.preventDefault();
         if (inputMessage.trim() === '') return;
 
         setMessages([...messages, { text: inputMessage, sender: 'user' }]);
         setInputMessage('');
 
-        setTimeout(() => {
-            setMessages(prev => [...prev, { text: "Thank you for your message. I'm processing your request.", sender: 'bot' }]);
-        }, 1000);
+        try {
+            // Call the backend API
+            const response = await axios.post('http://localhost:5000/rag', {
+                query: inputMessage,
+            });
+    
+            // Display the response from the backend
+            setMessages((prev) => [...prev, { text: response.data.response, sender: 'bot' }]);
+        } catch (error) {
+            setMessages((prev) => [...prev, { text: "Error: Unable to fetch a response.", sender: 'bot' }]);
+            console.error("Backend error:", error);
+        }
     };
 
     const renderContent = () => {
