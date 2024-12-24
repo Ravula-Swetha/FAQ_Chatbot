@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Navigation.css';
+import './CSS/Navigation.css';
 
 const Navigation = ({ activePage, setActivePage }) => {
     const [showDropdown, setShowDropdown] = useState(false);
