@@ -153,49 +153,99 @@ const PageContent = ({ activePage }) => {
                     </Carousel.Caption>
                   </Carousel.Item>
                 </Carousel>
+                <div className="about-page">
+                    <h1>About Us</h1>
+                    <p>
+                        Welcome to the <strong>KMIT FAQ Chatbot</strong> website!
+                    </p>
+                    <p>
+                        At <strong>Keshav Memorial Institute of Technology (KMIT)</strong>, we understand the importance of having quick and accurate access to information. Whether you're a student, parent, or prospective candidate, navigating through essential details about our college can sometimes feel overwhelming. That’s why we’ve built this innovative FAQ Chatbot platform to serve as your go-to assistant for all things related to KMIT.
+                    </p>
+
+                    <h2>Our Mission</h2>
+                    <p>
+                        The <strong>KMIT FAQ Chatbot</strong> is designed to make your interaction with KMIT simple, efficient, and friendly. With a user-friendly interface and powerful AI-driven capabilities, our chatbot provides instant answers to frequently asked questions, saving you time and effort.
+                    </p>
+
+                    <h2>Key Features</h2>
+                    <ul>
+                        <li><strong>24/7 Assistance:</strong> Get answers anytime, anywhere.</li>
+                        <li><strong>Accurate Information:</strong> The chatbot is trained using verified data from our official college resources.</li>
+                        <li><strong>Friendly Interface:</strong> Engage with a polite and approachable assistant that simplifies complex queries.</li>
+                    </ul>
+
+                    <h2>What We Cover</h2>
+                    <p>The chatbot can help you with:</p>
+                    <ul>
+                        <li>Admission details, eligibility criteria, and application processes.</li>
+                        <li>Academic programs and curriculum.</li>
+                        <li>Scholarships and financial aid information.</li>
+                        <li>College facilities, events, and clubs.</li>
+                        <li>Contact details and more.</li>
+                    </ul>
+                    <p>
+                        If the chatbot doesn’t have the answer, it will guide you to the official KMIT website or suggest alternative ways to get the information you need.
+                    </p>
+
+                    <h2>Why Choose Our Chatbot?</h2>
+                    <ul>
+                        <li>It’s fast, responsive, and eliminates the hassle of searching through multiple pages for answers.</li>
+                        <li>Perfect for students, parents, and visitors who need accurate details without delay.</li>
+                        <li>It reflects our commitment to using technology to enhance user experience.</li>
+                    </ul>
+
+                    <h2>Get in Touch</h2>
+                    <p>
+                        Have feedback or suggestions for us? We'd love to hear from you! Contact us through the <strong>Feedback</strong> section or visit the <strong>Help</strong> page for more support.
+                    </p>
+
+                    <p>
+                        Let us help you stay informed and connected with everything KMIT has to offer. Start chatting today!
+                    </p>
+                    </div>
               </div>
             );
           
-            case 'academics':
-  const departmentImages = {
-    CSE: 'https://res.cloudinary.com/dsfgf7eb7/image/upload/v1733836640/cse_o8ymwx.jpg?text=CSE',
-    CSM: 'https://res.cloudinary.com/dsfgf7eb7/image/upload/v1733836701/csm_onfcwv.jpg?text=CSM',
-    IT: 'https://res.cloudinary.com/dsfgf7eb7/image/upload/v1733836718/it_ak11ru.jpg?text=IT',
-    CSD: 'https://res.cloudinary.com/dsfgf7eb7/image/upload/v1733836712/csd_ds8odf.jpg?text=CSD',
-  };
+        case 'academics':
+            const departmentImages = {
+                CSE: 'https://res.cloudinary.com/dsfgf7eb7/image/upload/v1733836640/cse_o8ymwx.jpg?text=CSE',
+                CSM: 'https://res.cloudinary.com/dsfgf7eb7/image/upload/v1733836701/csm_onfcwv.jpg?text=CSM',
+                IT: 'https://res.cloudinary.com/dsfgf7eb7/image/upload/v1733836718/it_ak11ru.jpg?text=IT',
+                CSD: 'https://res.cloudinary.com/dsfgf7eb7/image/upload/v1733836712/csd_ds8odf.jpg?text=CSD',
+            };
 
-  return (
-    <div className="academics-container">
-      <h2 className="section-title">Departments</h2>
-      <div className="dashboard-cards">
-        {['CSE', 'CSM', 'IT', 'CSD'].map((dept, index) => (
-          <div
-            key={index}
-            className={`card ${activeCard === index ? 'active-card' : ''}`}
-            onClick={() => handleCardClick(index)}
-          >
-            <img
-              src={departmentImages[dept]} // Dynamically get the department's image
-              alt={`${dept} Department`}
-            />
-            <h4>{dept}</h4>
-            <p>Department of {dept}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+            return (
+                <div className="academics-container">
+                    <h2 className="section-title">Departments</h2>
+                    <div className="dashboard-cards">
+                        {['CSE', 'CSM', 'IT', 'CSD'].map((dept, index) => (
+                        <div
+                            key={index}
+                            className={`card ${activeCard === index ? 'active-card' : ''}`}
+                            onClick={() => handleCardClick(index)}
+                        >
+                            <img
+                            src={departmentImages[dept]} // Dynamically get the department's image
+                            alt={`${dept} Department`}
+                            />
+                            <h4>{dept}</h4>
+                            <p>Department of {dept}</p>
+                        </div>
+                        ))}
+                    </div>
+                </div>
+            );
 
-      default:
-        return <p>Select a page to view content.</p>;
+        default:
+            return <p>Select a page to view content.</p>;
     }
   };
 
-  return (
-    <div className="page-content-wrapper">
-      <div className="page-content">{renderContent()}</div>
-    </div>
-  );
+    return (
+        <div className="page-content-wrapper">
+        <div className="page-content">{renderContent()}</div>
+        </div>
+    );
 };
 
 export default PageContent;
